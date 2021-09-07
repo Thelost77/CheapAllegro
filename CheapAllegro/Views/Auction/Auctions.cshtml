@@ -1,0 +1,58 @@
+﻿@model CheapAllegro.Core.ViewModels.AuctionSideViewModel
+
+
+<h1 class="auctionHeader">Aukcje</h1>
+
+<div class="container">
+    <form id="filterForm">
+        <div class="form-row align-items-center">
+            <div class="col-auto">
+                @Html.TextBoxFor(x => x.Filter.Title,
+                new { @class = "form-control mb-2", placeholder = "Tytuł" })
+            </div>
+            <div class="col-auto">
+                @Html.DropDownListFor(x => x.Filter.CategoryId, new SelectList(Model.Categories, "Id", "Name"),
+                "-- Wybierz kategorię --", new { @class = "form-control mb-2" })
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Szukaj</button>
+            </div>
+
+        </div>
+    </form>
+    
+
+
+    @await Html.PartialAsync("_AuctionList", Model.Auctions)
+
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#filterForm').submit(function () {
+
+                $.ajax({
+                    type: "Post",
+                    url: "@Url.Action("Auctions", "Auction")",
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $('#auctionList').html(data);
+                    },
+                    error: function (data) {
+                        alert(data.alert)
+                    },
+                    dataType: "html"
+                });
+
+                return false;
+
+            });
+
+        });
+    </script>
+}
+

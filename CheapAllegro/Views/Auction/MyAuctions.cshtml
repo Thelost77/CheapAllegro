@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CheapAllegro.Core.Models.Domains.Auction>
+
+<div>
+    <table class="table mt-3 table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Tytuł</th>
+                <th scope="col">Opis</th>
+                <th scope="col">Cena</th>
+                <th scope="col">Kategoria</th>
+                <th scope="col">Data kreacji</th>
+                <th scope="col">Zdjęcie</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var auction in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Auction", "Auction", new { id = auction.Id})" class="font-weight-bold">
+                                @auction.Title
+                            </a>
+                        </td>
+                        <td>@auction.Description</td>
+                        <td>@auction.Prize</td>
+                        <td>@auction.Category.Name</td>
+                        <td>@auction.DateOfCreation?.ToString("dd-MM-yyyy")</td>
+                        <td>
+                            <img src="~/images/@auction.AuctionPicture"
+                                 class="rounded-circle"
+                                 height="40" width="40"
+                                 asp-append-version="true" />
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="deleteAuction('@auction.Id', this)">
+                                Usuń
+                            </button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="text-center">
+                        Nie masz żadnych aukcji!
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+@section Scripts{
+    <script>
+        function deleteAuction(id, btn) {
+            if (!confirm("Czy napewno chcesz usunąć aukcję?"))
+                return;
+
+            $.ajax({
+                    type: "Post",
+                    url: "@Url.Action("Delete","Auction")",
+                    data: {
+                        id: id
+                    },
+                success: function (data) {
+                    if (data.success) {
+                        var row = btn.parentNode.parentNode;
+                        row.parentNode.removeChild(row);
+                    } else {
+                        alert(data.message);
+                    }
+                    },
+                    error: function (data) {
+                        alert(data.message)
+                    },
+                    dataType: "json"
+                });
+        }
+    </script>
+
+}

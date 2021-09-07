@@ -1,0 +1,82 @@
+﻿@model CheapAllegro.Core.ViewModels.AuctionViewModel
+
+
+@{
+    ViewBag.Title = Model.Header;
+}
+
+<h1>@Model.Header</h1>
+
+@using (Html.BeginForm("Auction", "Auction", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p class="alert alert-info mt-4 mb-4">
+        Pola tytuł, opis, cena i kategoria są <strong>wymagane</strong>
+    </p>
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Description)
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control TextField" })
+        @Html.ValidationMessageFor(x => x.Description)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Prize)
+        @Html.TextBoxFor(x => x.Prize, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Prize)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.CategoryId)
+        @Html.DropDownListFor(x => x.CategoryId, new SelectList(Model.Categories, "Id", "Name"), "-- Wybierza kategorię --",
+        new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryId)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.AuctionPicture)
+        <div class="custom-file">
+            <input asp-for="AuctionPicture" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <span asp-validation-for="AuctionPicture" class="text-danger"></span>
+    </div>
+
+    <p class="alert alert-info mt-2 mb-2" style="background-color: #ffe201">
+        Obsługiwane formaty plików to :  <strong> .JPG, .JPE, .BMP, .GIF, .PNG </strong> plik w innym formacie zostanie zamieniony na zdjęcie <strong>DOMYŚLNE</strong>!
+    </p>
+
+    @if (Model.Id != 0)
+    {
+        <div class="imageSmall">
+            <img src="~/images/@Model.PicturePath" alt="@Model.Title" />
+            <h6 class="mt-4" style="margin-left: 40px">---  Aktualne zdjęcie aukcji --- </h6>
+        </div>
+    }
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg mt-2">Zapisz</button>
+    </div>
+
+
+}
+
+
+@section scripts{
+
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}

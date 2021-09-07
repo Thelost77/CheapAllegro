@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheapAllegro", "CheapAllegro\CheapAllegro.csproj", "{8924C663-8990-4035-80B7-55991E4369A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8924C663-8990-4035-80B7-55991E4369A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8924C663-8990-4035-80B7-55991E4369A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8924C663-8990-4035-80B7-55991E4369A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8924C663-8990-4035-80B7-55991E4369A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B7493A2-EC57-4027-9C8D-5F5BAAC856AD}
+	EndGlobalSection
+EndGlobal
