@@ -44,7 +44,10 @@ namespace CheapAllegro.Controllers
         [AllowAnonymous]
         public IActionResult Auctions(AuctionSideViewModel viewModel)
         {
+            var userId = User.GetUserId();
+
             var auctions = _auctionService.Get(
+                userId,
                 viewModel.Filter.CategoryId,
                 viewModel.Filter.Title);
 

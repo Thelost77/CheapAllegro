@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<CheapAllegro.Core.Models.Domains.Auction> 
 
 
-<div class="row mt-5 mb-5"  id="auctionList">
+<div class="row mt-5 mb-5" id="auctionList">
+
     @if (Model.Any() && Model != null)
     {
         @foreach (var auction in Model)
