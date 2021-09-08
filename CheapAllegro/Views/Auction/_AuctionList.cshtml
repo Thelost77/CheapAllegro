@@ -1,49 +1,47 @@
-﻿@model IEnumerable<CheapAllegro.Core.Models.Domains.Auction> 
+﻿@model IEnumerable<CheapAllegro.Core.Models.Domains.Auction>
 
-<div id="auctionList">
-    <div class="row mt-5 mb-5">
+<div class="row mt-5 mb-5">
 
-        @if (Model.Any() && Model != null)
+    @if (Model.Any() && Model != null)
+    {
+        @foreach (var auction in Model)
         {
-            @foreach (var auction in Model)
-            {
-                <div class="col-12 col-md-6 col-xl-4 mb-4">
-                    <article id="auction-@auction.Id" class="auction abox">
+            <div class="col-12 col-md-6 col-xl-4 mb-4">
+                <article id="auction-@auction.Id" class="auction abox">
+                    <a href="" title="@auction.Title">
+                        <div class="image">
+                            <img src="~/images/@auction.AuctionPicture" alt="@auction.Title" />
+                        </div>
+                    </a>
+                    <h3 class="title">
                         <a href="" title="@auction.Title">
-                            <div class="image">
-                                <img src="~/images/@auction.AuctionPicture" alt="@auction.Title" />
-                            </div>
+                            @auction.Title
                         </a>
-                        <h3 class="title">
-                            <a href="" title="@auction.Title">
-                                @auction.Title
-                            </a>
-                        </h3>
-                        <div class="text-primary mb-2" align="center">
-                            @auction.Description
-                        </div>
+                    </h3>
+                    <div class="text-primary mb-2" align="center">
+                        @auction.Description
+                    </div>
 
-                        <p class="total">
-                            Wartość:
-                            <span class="value">
-                                @auction.Prize PLN
-                            </span>
-                        </p>
-                        <div align="center">
-                            <button class="btn btn-primary mt-4">
-                                Kup Teraz!
-                            </button>
-                        </div>
-                    </article>
-                </div>
+                    <p class="total">
+                        Wartość:
+                        <span class="value">
+                            @auction.Prize PLN
+                        </span>
+                    </p>
+                    <div align="center">
+                        <button class="btn btn-primary mt-4">
+                            Kup Teraz!
+                        </button>
+                    </div>
+                </article>
+            </div>
 
-            }
         }
-        else
-        {
-            <h1 class="mt-4 auctionHeader">
-                Brak Aukcji
-            </h1>
-        }
-    </div>
+    }
+    else
+    {
+        <h1 class="mt-4 auctionHeader">
+            Brak Aukcji
+        </h1>
+    }
 </div>

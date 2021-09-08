@@ -21,8 +21,12 @@
         </div>
     </form>
     
-
-    @await Html.PartialAsync("_AuctionList", Model.Auctions)
+    <div>
+        <div id="auctionList">
+            @await Html.PartialAsync("_AuctionList", Model.Auctions)
+        </div>
+    </div>
+    
 
 </div>
 
