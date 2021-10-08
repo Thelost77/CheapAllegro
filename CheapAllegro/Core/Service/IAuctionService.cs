@@ -12,6 +12,7 @@ public interface IAuctionService
         IEnumerable<Category> GetCategories();
         IEnumerable<Auction> GetAllAuctions(int categoryId = 0, string title = null);
         Auction Get(int id, string userId);
+        Auction Get(int id);
         void Update(Auction auction);
         void Add(Auction auction);
         void Delete(int id, string userId);

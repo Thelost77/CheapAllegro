@@ -56,6 +56,11 @@ namespace CheapAllegro.Persistence.Repositories
             return _context.Auctions.Single(x => x.Id == id && x.UserId == userId);
         }
 
+        public Auction Get(int id)
+        {
+            return _context.Auctions.Single(x => x.Id == id);
+        }
+
         public void Add(Auction auction)
         {
             _context.Auctions.Add(auction);

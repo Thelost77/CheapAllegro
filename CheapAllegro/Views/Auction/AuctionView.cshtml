@@ -1,0 +1,25 @@
+﻿@model CheapAllegro.Core.Models.Domains.Auction
+
+    <div class="row mt-5 mb-5 justify-content-center">
+        <div class="col-12">
+            <h2 align="center">@Model.Title</h2>
+            <div class="img-fluid imgView mt-4 mb-2" align="center">
+                <img src="~/images/@Model.AuctionPicture" alt="@Model.Title" />
+            </div>
+            <p class="total mb-4 mt-4" align="center">
+                <strong style="font-size: 20px">Wartość:</strong>
+                <span class="value" style="font-size: 20px">
+                    @Model.Prize PLN
+                </span>
+            </p>
+            <div class="text-primary mb-2" style="font-size:18px; margin:auto">
+                <strong>Opis:</strong><br />
+                @Model.Description
+            </div>
+            <div style="margin:auto">
+                <button class="btn btn-danger btn-lg mt-4" onclick="window.location.href ='@Url.Action("Buy", "Auction")';">
+                    Kup Teraz!
+                </button>
+            </div>
+        </div>
+    </div>

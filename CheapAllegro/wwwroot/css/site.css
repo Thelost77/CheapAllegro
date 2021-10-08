@@ -127,19 +127,18 @@ body {
     margin-bottom: 10px;
     overflow: hidden;
 }
-.imagePolicy {
+.imgView {
     display: flex;
-    justify-content: center;
+    position: relative;
     height: 500px;
-    max-height: 600px;
-    width: 800px;
+    width: 870px; 
     margin-top: 10px;
+    margin:auto;
     overflow: hidden;
+    border:double;
 }
 .imageMain {
     display: flex;
-    padding-left: 300px;
-    justify-content: center;
     height: 500px;
     max-height: 600px;
     width: 800px;

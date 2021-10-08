@@ -27,8 +27,13 @@ namespace CheapAllegro.Persistence.Services
         }
 
         public Auction Get(int id, string userId)
-{
+        {
             return _unitOfWork.Auction.Get(id, userId);
+        }
+
+        public Auction Get(int id)
+        {
+            return _unitOfWork.Auction.Get(id);
         }
         public void Add(Auction auction)
         {

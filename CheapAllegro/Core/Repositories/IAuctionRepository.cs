@@ -9,6 +9,7 @@ namespace CheapAllegro.Core.Repositories
     {
         IEnumerable<Auction> Get(string userId, int categoryId = 0, string title = null);
         Auction Get(int id, string userId);
+        Auction Get(int id);
         IEnumerable<Auction> GetAllAuctions(int categoryId = 0, string title = null);
         void Add(Auction auction);
         void Update(Auction auction);

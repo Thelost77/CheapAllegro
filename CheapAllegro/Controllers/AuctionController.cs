@@ -143,7 +143,18 @@ namespace CheapAllegro.Controllers
 
             return View(Auctions);
         }
+        public IActionResult AuctionView(int id)
+        {
+            var auction = _auctionService.Get(id);
 
+            return View(auction);
+        }
+        public IActionResult Buy()
+        {
+           // var auction = _auctionService.Get(id);
+
+            return View();
+        }
         [HttpPost]
         public IActionResult Delete(int id)
         {
@@ -183,6 +194,7 @@ namespace CheapAllegro.Controllers
             }
             return uniqueFileName;
         }
+
 
     }
 }
