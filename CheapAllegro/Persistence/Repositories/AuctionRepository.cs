@@ -12,8 +12,8 @@ namespace CheapAllegro.Persistence.Repositories
 {
     public class AuctionRepository : IAuctionRepository
     {
-        private IApplicationDbContext _context;
-        private IWebHostEnvironment _webHostEnvironment;
+        private readonly IApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         public AuctionRepository(IApplicationDbContext context,
                                  IWebHostEnvironment webHostEnvironment)
         {
